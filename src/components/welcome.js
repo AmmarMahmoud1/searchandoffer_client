@@ -7,6 +7,7 @@ import { toastError } from '../lib/toastError';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import { MDBIcon} from 'mdbreact';
 
 const Welcome = () => {
   const [allPost, setAllPosts] = useState([]);
