@@ -30,12 +30,12 @@ const Offers =() =>{
 
     return(
         <>
-        {(!allPost ? <div>downloading</div> 
+        {(!allPost ? <div className='downloading'>downloading</div> 
         
         : allPost.map((post) =>{
 
           if (post.category === 'Offers')   return (
-            <div className='container mt-5
+            <div className='container mt-5 mb-5
             ' key={post._id}>
             <div className='row'>
             <div className='col-sm-2'></div>
@@ -45,7 +45,8 @@ const Offers =() =>{
                     <Badge bg="secondary"> {post.category}</Badge>
               </h4>
               <Card.Title>{post.title} {post.zipCode}</Card.Title>
-              <Card.Img variant="top" className='w-100' src={post.image} />
+              {post.image && <Card.Img variant="top" className="w-100 img-card" src={post.image} />}
+                    {!post.image && <img className="image-placeholder" src={require('../images/Search & Offer-logos_black.png')} />}
               <Card.Body>
              
               
@@ -54,6 +55,9 @@ const Offers =() =>{
                 
                 <Card.Text>
                   {post.content}
+                </Card.Text>
+                <Card.Text>
+                  $ {post.price}
                 </Card.Text>
                 <Card.Text> <MDBIcon MDBIcon fas icon="map-marker-alt"  className='icon' />  {post.Address}  {post.zipCode}  {post.city}  </Card.Text>
                 <Card.Text>
@@ -82,12 +86,15 @@ const Offers =() =>{
       
             )
 
+           
 
 
 
-        }) )}
+
+        }) 
+         )}
         
-        
+        <div className='downloading'>Downloading....</div> 
         </>
     )
 

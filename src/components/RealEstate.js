@@ -12,7 +12,7 @@ const RealEstate =({allPost}) =>{
 
   return(
     <>
-    {(!allPost ? <div>downloading</div> 
+    {(!allPost ? <div className='downloading'>downloading</div> 
     
     : allPost.map((post) =>{
 
@@ -39,7 +39,7 @@ const RealEstate =({allPost}) =>{
               {post.content}
             </Card.Text>
             <Card.Text>
-              {post.price}
+             $ {post.price}
             </Card.Text>
             <Card.Text> <MDBIcon MDBIcon fas icon="map-marker-alt"  className='icon' />  {post.Address}  {post.zipCode}  {post.city}  </Card.Text>
             <Card.Text>

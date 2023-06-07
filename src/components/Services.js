@@ -28,7 +28,7 @@ const Services =() =>{
 
     return(
         <>
-        {(!allPost ? <div>downloading</div> 
+        {(!allPost ? <div className='downloading'>Downloading....</div> 
         
         : allPost.map((post) =>{
 
@@ -43,7 +43,8 @@ const Services =() =>{
                 <Badge bg="secondary"> {post.category}</Badge>
               </h4>
               <Card.Title>{post.title} </Card.Title>
-              <Card.Img variant="top" className='w-100' src={post.image} />
+              {post.image && <Card.Img variant="top" className="w-100 img-card" src={post.image} />}
+                    {!post.image && <img className="image-placeholder" src={require('../images/Search & Offer-logos_black.png')} />}
               <Card.Body>
              
               
@@ -54,7 +55,7 @@ const Services =() =>{
                   {post.content}
                 </Card.Text>
                 <Card.Text>
-                  {post.price}
+                $  {post.price}  
                 </Card.Text>
                 <Card.Text> <MDBIcon MDBIcon fas icon="map-marker-alt"  className='icon' />  {post.Address}  {post.zipCode}  {post.city}  </Card.Text>
                 <Card.Text>
@@ -82,6 +83,8 @@ const Services =() =>{
           </div>
       
             )
+
+           
 
 
 

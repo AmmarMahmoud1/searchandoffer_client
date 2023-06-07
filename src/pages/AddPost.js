@@ -92,7 +92,7 @@ const AddPost = () => {
     // <form  onSubmit={handleSubmit} className="container mt-5">
   
     // </form>
-    <form onSubmit={handleSubmit} className="container mt-5">
+    <form onSubmit={handleSubmit} className="container mt-5 mb-5">
           <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>I am </Form.Label>

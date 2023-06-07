@@ -162,29 +162,30 @@ const options = {
                  
                   <MDBCardBody  ref={chatContainerRef}>
                   {messages.map((item) => (
-    <div
-      className={`p-3 ${item.senderId === receiverId ? "me-3" : "ms-3"} ${
-        item.senderId === receiverId ? "border" : ""
-      }`}
-      style={{
-        borderRadius: "15px",
-        backgroundColor:
-          item.senderId === receiverId ? "#fbfbfb" : "rgba(57, 192, 237,.2)",
-      }}
-      key={item._id}
-    >
-      <p className="small mb-0">
-        {item.senderId === receiverId ? receiver : "You"} wrote: {item.message},{" "}
-        at: {new Date(item.updatedAt).toLocaleString(undefined, {
+  <div
+    className={`p-3 ${item.senderId === receiverId ? "me-3" : "ms-3"} ${
+      item.senderId === receiverId ? "border" : ""
+    }`}
+    style={{
+      borderRadius: "15px",
+      backgroundColor:
+        item.senderId === receiverId ? "#fbfbfb" : "rgba(57, 192, 237,.2)",
+    }}
+    key={item._id}
+  >
+    <p className="mb-0 fw-bold">{item.senderId === receiverId ? receiver : item.name}</p>
+    <p className="mb-0">{item.message}</p>
+    <p className="small mb-0">
+      at: {new Date(item.updatedAt).toLocaleString(undefined, {
         day: "numeric",
         month: "long",
         year: "numeric",
         hour: "numeric",
         minute: "numeric",
       })}
-      </p>
-    </div>
-  ))}
+    </p>
+  </div>
+))}
 
                   <MDBTextArea
                     className="form-outline"

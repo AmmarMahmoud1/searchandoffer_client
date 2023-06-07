@@ -29,12 +29,12 @@ const Jobs =() =>{
 
       return(
         <>
-        {(!allPost ? <div>downloading</div> 
+        {(!allPost ? <div className='downloading'>downloading</div> 
         
         : allPost.map((post) =>{
 
           if (post.category === 'Job')   return (
-            <div className='container mt-5
+            <div className='container mt-5 mb-5
             ' key={post._id}>
             <div className='row'>
             <div className='col-sm-2'></div>
@@ -44,7 +44,8 @@ const Jobs =() =>{
                 <Badge bg="secondary"> {post.category}</Badge>
               </h4>
               <Card.Title>{post.title} </Card.Title>
-              <Card.Img variant="top" className='w-100' src={post.image} />
+              {post.image && <Card.Img variant="top" className="w-100 img-card" src={post.image} />}
+                    {!post.image && <img className="image-placeholder" src={require('../images/Search & Offer-logos_black.png')} />}
               <Card.Body>
              
               
@@ -53,6 +54,9 @@ const Jobs =() =>{
                 
                 <Card.Text>
                   {post.content}
+                </Card.Text>
+                <Card.Text>
+                  $ {post.price}
                 </Card.Text>
                 <Card.Text>
                 <Card.Text> <MDBIcon MDBIcon fas icon="map-marker-alt"  className='icon' />  {post.Address}  {post.zipCode}  {post.city}  </Card.Text>
