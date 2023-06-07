@@ -15,7 +15,7 @@ const Autos =() =>{
         (async () => {
           try {
          
-            const { data } = await axios('http://localhost:8080/api');
+            const { data } = await axios('https://searchandoffer.onrender.com/api');
             console.log(data);
             setAllPosts(data);
             

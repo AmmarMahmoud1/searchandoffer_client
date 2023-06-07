@@ -14,7 +14,7 @@ const Welcome = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios('http://localhost:8080/api');
+        const { data } = await axios('https://searchandoffer.onrender.com/api');
         setAllPosts(data);
       } catch (error) {
         toastError(error.message || 'No posts,  Sorry..!');
@@ -68,11 +68,12 @@ const Welcome = () => {
                     {post.image && <Card.Img variant="top" className="w-100 img-card" src={post.image} />}
                     {!post.image && <img className="image-placeholder" src={require('../images/Search & Offer-logos_black.png')} />}
                     <Card.Body>
-                      <Card.Title>
-                        <i className="bi bi-geo-alt">{post.Address}</i>
-                      </Card.Title>
+                      
                       <Card.Text className="content">{post.content}</Card.Text>
+                      <Card.Text> <MDBIcon MDBIcon fas icon="map-marker-alt"  className='icon' />  {post.Address}  {post.zipCode}  {post.city}  </Card.Text>
+                      <Card.Text className="content">{post.price} $  </Card.Text>
                       <Card.Text>
+                    
                 {new Date(post.updatedAt).toLocaleString(undefined, {
                             day: "numeric",
                             month: "long",
@@ -82,7 +83,7 @@ const Welcome = () => {
                           })}
                 </Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-                      <Link to={`/message/${post._id}`}>message</Link>
+                      <Link to={`/message/${post._id}`}><MDBIcon fas icon="envelope" className='icon' title="send a message"/></Link>
                     </Card.Body>
                   </Card>
                 </div>

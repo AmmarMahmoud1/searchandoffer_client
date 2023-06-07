@@ -13,7 +13,7 @@ const Inbox = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios('http://localhost:8080/api/messages/all', { withCredentials: true });
+        const { data } = await axios('https://searchandoffer.onrender.com/api/messages/all', { withCredentials: true });
         setAllMessages(data);
       } catch (error) {
         toastError(
@@ -26,7 +26,7 @@ const Inbox = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios('http://localhost:8080/api');
+        const { data } = await axios('https://searchandoffer.onrender.com/api');
         setAllPosts(data);
       } catch (error) {
         toastError(

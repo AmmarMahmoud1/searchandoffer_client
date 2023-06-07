@@ -12,7 +12,6 @@ import {
   MDBIcon,
   MDBTextArea,
 } from "mdb-react-ui-kit";
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
@@ -40,7 +39,7 @@ useEffect(() => {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const { data } = await axios(`http://localhost:8080/api/messages/post/allmessages/${id}`, { withCredentials: true });
+      const { data } = await axios(`https://searchandoffer.onrender.com/api/messages/post/allmessages/${id}`, { withCredentials: true });
 
       const sortedMessages = data.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
 
@@ -63,7 +62,7 @@ useEffect(() => {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const { data } = await axios(`http://localhost:8080/api/${id}`, { withCredentials: true });
+      const { data } = await axios(`https://searchandoffer.onrender.com/api/${id}`, { withCredentials: true });
 
       console.log(data.userId);
       setTitle(data.title);
@@ -81,7 +80,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       if (receiverId !== '') {
-        const { data } = await axios(`http://localhost:8080/api/user/${receiverId}`, { withCredentials: true });
+        const { data } = await axios(`https://searchandoffer.onrender.com/api/user/${receiverId}`, { withCredentials: true });
 
         console.log(data);
          setReceiver(data.name)
@@ -105,7 +104,7 @@ const handleSubmit = async () => {
   try {
 
     await axios.post(
-      'http://localhost:8080/api/messages/addmsg',
+      'https://searchandoffer.onrender.com/api/messages/addmsg',
      {message, receiverId, postId},
       { withCredentials: true }
     );

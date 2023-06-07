@@ -31,7 +31,7 @@ function Login({ setLoggedIn, setLoggedInEmail }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post('http://localhost:8080/api/user/login', { ...state }, { withCredentials: true })
+      .post('https://searchandoffer.onrender.com/api/user/login', { ...state }, { withCredentials: true })
       .then((response) => {
         setStatus(response.status);
         console.log(response.status + ' response');
