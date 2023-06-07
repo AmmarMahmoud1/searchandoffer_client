@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { useNavigate,navigate } from 'react-router-dom';
+import { useNavigate,Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { toastError } from '../lib/toastError';
 
@@ -13,6 +13,8 @@ import {
 from 'mdb-react-ui-kit';
 
 function Login({ setLoggedIn, setLoggedInEmail }) {
+
+
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -38,15 +40,20 @@ function Login({ setLoggedIn, setLoggedInEmail }) {
         setState({ email: '', password: '' });
         setLoggedIn(true);
         setLoggedInEmail(state.email);
-        navigate('/home');
+  
+       
       })
       .catch(() => {
         setStatus(0);
       });
   };
+  
+  
 
   return (
-    <form onSubmit={handleSubmit}>
+
+    
+   <form onSubmit={handleSubmit}>
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
         <MDBInput
           wrapperClass="mb-4"
@@ -83,7 +90,7 @@ function Login({ setLoggedIn, setLoggedInEmail }) {
         </div>
       </MDBContainer>
     </form>
-  );
+  )
 }
 
 export default Login;

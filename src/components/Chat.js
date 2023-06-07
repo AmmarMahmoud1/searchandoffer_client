@@ -139,7 +139,7 @@ const options = {
    
 
      
-     { !messages ? <div>please wait</div> :
+     { !messages ? <div className='downloading'>downloading</div>  :
 
           
 
@@ -173,10 +173,11 @@ const options = {
     }}
     key={item._id}
   >
-    <p className="mb-0 fw-bold">{item.senderId === receiverId ? receiver : item.name}</p>
-    <p className="mb-0">{item.message}</p>
+    <p className="mb-0">{item.senderId === receiverId ? receiver : item.name}</p>
+    
+    <p className="mb-0 fw-bold">{item.message}</p>
     <p className="small mb-0">
-      at: {new Date(item.updatedAt).toLocaleString(undefined, {
+       {new Date(item.updatedAt).toLocaleString(undefined, {
         day: "numeric",
         month: "long",
         year: "numeric",

@@ -91,7 +91,7 @@ const Furniture =() =>{
 
         }) )}
         
-        
+        <div className='downloading'>downloading</div> 
         </>
     )
 
