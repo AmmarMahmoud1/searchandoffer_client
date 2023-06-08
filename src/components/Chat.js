@@ -26,6 +26,8 @@ const [receiverId, setReceiverId] = useState('');
 const [message, setMessage] = useState('');
 const [postId, setPostId] = useState('');
 const chatContainerRef = useRef(null);
+const [senderName, setSenderName] = useState('');
+const [receiverName, setReceiverName] = useState('');
 const scrollToBottom = () => {
   if (chatContainerRef.current) {
     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -67,6 +69,7 @@ useEffect(() => {
       console.log(data.userId);
       setTitle(data.title);
       setReceiverId(data.userId);
+      setSender(data.name); // Assuming the sender name is available in the API response
     } catch (error) {
       console.log(error);
       // toastError(error.message || 'No posts, Sorry..!');
@@ -162,31 +165,34 @@ const options = {
                  
                   <MDBCardBody  ref={chatContainerRef}>
                   {messages.map((item) => (
-  <div
-    className={`p-3 ${item.senderId === receiverId ? "me-3" : "ms-3"} ${
-      item.senderId === receiverId ? "border" : ""
-    }`}
-    style={{
-      borderRadius: "15px",
-      backgroundColor:
-        item.senderId === receiverId ? "#fbfbfb" : "rgba(57, 192, 237,.2)",
-    }}
-    key={item._id}
-  >
-    <p className="mb-0">{item.senderId === receiverId ? receiver : item.name}</p>
-    
-    <p className="mb-0 fw-bold">{item.message}</p>
-    <p className="small mb-0">
-       {new Date(item.updatedAt).toLocaleString(undefined, {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      })}
-    </p>
-  </div>
-))}
+    <div
+      className={`p-3 ${
+        item.senderId === receiverId ? "me-3" : "ms-3"
+      } ${item.senderId === receiverId ? "border" : ""}`}
+      style={{
+        borderRadius: "15px",
+        backgroundColor:
+          item.senderId === receiverId ? "#fbfbfb" : "rgba(57, 192, 237, .2)",
+      }}
+      key={item._id}
+    >
+      <p className="mb-0">
+        
+      </p>
+
+      <p className="mb-0 fw-bold">{item.message}</p>
+      <p className="small mb-0">
+        {new Date(item.updatedAt).toLocaleString(undefined, {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        })}
+      </p>
+    </div>
+  ))}
+
 
                   <MDBTextArea
                     className="form-outline"
